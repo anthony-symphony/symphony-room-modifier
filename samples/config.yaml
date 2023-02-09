@@ -1,0 +1,6 @@
+host: develop.symphony.com
+
+bot:
+  username: SymRoomModifier
+  privateKey:
+    path: ./rsa/private.key
