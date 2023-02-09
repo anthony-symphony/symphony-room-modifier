@@ -463,16 +463,12 @@ def command_line_run(argv):
     if not argv:
         print_help()
         exit()
-    if argv[0] == 'csv':
-        csv_mode(argv[1:])
-    elif argv[0] == 'single':
-        single_mode(argv[1:])
-    elif argv[0] == 'all':
-        all_mode(argv[1:])
-    elif any([x in argv for x in ['--stream', '-s']]):
-        single_mode(argv[0:])
-    elif any([x in argv for x in ['--list', '--listall', '--input', '-i', '-l', 'a']]):
+    if argv[0] == 'csv' or any([x in argv for x in ['--list', '--listall', '--input', '-i', '-l', 'a']]):
         csv_mode(argv[0:])
+    elif argv[0] == 'single' or any([x in argv for x in ['--stream', '-s']]):
+        single_mode(argv[0:])
+    elif argv[0] == 'all':
+        all_mode(argv[0:])
     else:
         print_help()
         exit()
