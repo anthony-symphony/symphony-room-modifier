@@ -154,7 +154,7 @@ def single_mode(argv):
         elif stripped_opt in ALL_AVAILABLE_ROOM_SETTINGS:
             settings = parse_room_settings(settings, stripped_opt, arg, True)
     
-    log.info('Modifying stream {} with settings: {}'.format(stream_id, settings))
+    log.info('Modifying stream {} with settings: {}'.format(stream_id, string_to_one_line(settings)))
     if settings is not None:
         try:
             asyncio.run(update_single_room(stream_id,settings))
@@ -469,6 +469,10 @@ def command_line_run(argv):
         single_mode(argv[1:])
     elif argv[0] == 'all':
         all_mode(argv[1:])
+    elif any([x in argv for x in ['--stream', '-s']]):
+        single_mode(argv[0:])
+    elif any([x in argv for x in ['--list', '--listall', '--input', '-i', '-l', 'a']]):
+        csv_mode(argv[0:])
     else:
         print_help()
         exit()
