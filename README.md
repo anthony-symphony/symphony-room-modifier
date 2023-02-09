@@ -127,7 +127,7 @@ Status (Export active an inactive rooms if not specified. --list will only expor
 The below example will export all internal rooms and will include non-modifiable settings to the output file `test_output.csv`
 
 ```
-python ./modify_rooms.py --list --internal -x --output test_output.csv
+python ./modify_rooms.py csv --list --internal -x --output test_output.csv
 ```
 <hr/>
 
